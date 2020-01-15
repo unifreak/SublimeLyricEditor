@@ -196,15 +196,16 @@ class LyricTagAndNextCommand(sublime_plugin.TextCommand):
             v.sel().add(next_line.a)
             v.insert(edit, next_line.a, make_tag())
 
-class LyricPauseCommand(sublime_plugin.TextCommand):
+class LyricTogglePauseResumeCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        timer().pause()
-        set_status('pause')
-
-class LyricResumeCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
-        timer().resume()
-        set_status('tagging')
+        v = view()
+        status = get_status()
+        if status == 'tagging':
+            timer().pause()
+            set_status('pause')
+        if status == 'pause':
+            timer().resume()
+            set_status('tagging')
 
 class LyricOffsetCommand(sublime_plugin.TextCommand):
     def run(self, edit, updown='up'):

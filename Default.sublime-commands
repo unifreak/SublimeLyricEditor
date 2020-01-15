@@ -12,12 +12,8 @@
         "command": "lyric_done"
     },
     {
-        "caption": "Lyric Editor: Pause",
-        "command": "lyric_pause"
-    },
-    {
-        "caption": "Lyric Editor: Resume",
-        "command": "lyric_resume"
+        "caption": "Lyric Editor: Pause / Resume",
+        "command": "lyric_toggle_pause_resume"
     },
     {
         "caption": "Lyric Editor: Insert Meta Info",

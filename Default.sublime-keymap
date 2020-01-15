@@ -4,6 +4,10 @@
         "command": "lyric_tag_and_next"
     },
     {
+        "keys": ["ctrl+alt+space"],
+        "command": "lyric_toggle_pause_resume"
+    },
+    {
         "keys": ["ctrl+alt+["],
         "command": "lyric_offset",
         "args": {"updown": "down"}
