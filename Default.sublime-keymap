@@ -1,0 +1,26 @@
+[
+    {
+        "keys": ["ctrl+super+j"],
+        "command": "lyric_tag_and_next"
+    },
+    {
+        "keys": ["ctrl+super+["],
+        "command": "lyric_offset",
+        "args": {"updown": "down"}
+    },
+    {
+        "keys": ["ctrl+super+]"],
+        "command": "lyric_offset",
+        "args": {"updown": "up"}
+    },
+    {
+        "keys": ["escape"],
+        "command": "lyric_roll_next",
+        "args": {"pos": 0, "is_last": true},
+        "context": [
+            {
+                "key": "lyric_editor.escape_play"
+            }
+        ]
+    }
+]

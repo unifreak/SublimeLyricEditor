@@ -1,0 +1,34 @@
+[
+    {
+        "caption": "Lyric Editor: Start",
+        "command": "lyric_start"
+    },
+    {
+        "caption": "Lyric Editor: Start At",
+        "command": "lyric_start_at"
+    },
+    {
+        "caption": "Lyric Editor: Done",
+        "command": "lyric_done"
+    },
+    {
+        "caption": "Lyric Editor: Pause",
+        "command": "lyric_pause"
+    },
+    {
+        "caption": "Lyric Editor: Resume",
+        "command": "lyric_resume"
+    },
+    {
+        "caption": "Lyric Editor: Insert Meta Info",
+        "command": "lyric_insert_meta"
+    },
+    {
+        "caption": "Lyric Editor: Tag and Next",
+        "command": "lyric_tag_and_next"
+    },
+    {
+        "caption": "Lyric Editor: Play",
+        "command": "lyric_play"
+    },
+]
