@@ -1,5 +1,16 @@
 {
     "debug": true,
     "skip_empty_line": false,
-    "offset_step": 0.5
+    "offset_step": 0.5,
+    "meta": {
+        "ar" : "Lyrics artist",
+        "al" : "Album",
+        "ti" : "Lyrics (song) title",
+        "au" : "Creator of the Songtext",
+        // "length" : "How long the song is",
+        "by" : "Creator of the LRC file",
+        // "offset" : "+/- Overall timestamp adjustment in milliseconds, + shifts time up, - shifts down",
+        // "re" : "The player or editor that created the LRC file",
+        // "ve" : "version of program",
+    }
 }

@@ -5,11 +5,6 @@ import datetime
 import re
 from functools import partial
 
-'''
-@todo
-- esc to escape playing status
-'''
-
 status = {
     'idle': 'doing nothing',
     'tagging': 'tagging...',
@@ -45,6 +40,10 @@ def get_status():
 class Timer():
     _start = None
     _pause = None
+
+    def reset(self):
+        self._start = None
+        self._pause = None
 
     def start(self):
         self._start = time.time()
@@ -86,18 +85,19 @@ def plugin_loaded():
 
 class LyricInsertMetaCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        lines = [
-            '[ar:${1:artist}]',
-            '[al:${2:album}]',
-            '[ti:${3:title}]',
-            '[au:${4:author}]',
-            '[by:${5:your_name}]',
-        ]
-        snippet = '\n'.join(lines) + '\n\n'
+        metas = settings.get('meta', {})
+        log('meta:%s' % metas)
 
-        view = self.view
-        view.run_command('move_to', {'to': 'bof'})
-        view.run_command('insert_snippet', {'contents': snippet})
+        snippet = ''
+        i = 1
+        for name, placeholder in metas.items():
+            snippet += '[%s: ${%d:%s}]\n' % (name, i, placeholder)
+            i += 1
+
+        if snippet:
+            v = view()
+            v.run_command('move_to', {'to': 'bof'})
+            v.run_command('insert_snippet', {'contents': snippet})
 
 def toggle_distraction_free(on):
     options = {
@@ -189,6 +189,7 @@ class LyricTagAndNextCommand(sublime_plugin.TextCommand):
         if next_line.a < 0:
             sublime.message_dialog("Tagging complete")
             set_status('done')
+            timer().reset()
             toggle_distraction_free(False)
         else:
             v.sel().clear()
@@ -237,6 +238,10 @@ class LyricOffsetCommand(sublime_plugin.TextCommand):
 
 class LyricPlayCommand(sublime_plugin.TextCommand):
     def run(self, edit):
+        if get_status() == 'playing':
+            sublime.error_message('Already playing...')
+            return False
+
         v = view()
 
         tags = []
@@ -282,9 +287,9 @@ class EscapePlayContext(sublime_plugin.EventListener):
 
 class LyricRollNextCommand(sublime_plugin.TextCommand):
     def run(self, edit, pos, is_last):
-        '''@TOOD:
-        - escape didn't clear timeout callbacks
-        '''
+        if not get_status() == 'playing':
+            return False
+
         log('pos:%s' % pos)
         log('is_last:%s' % is_last)
         self.view.sel().clear()
@@ -293,4 +298,5 @@ class LyricRollNextCommand(sublime_plugin.TextCommand):
 
         if is_last:
             set_status('done')
+            toggle_distraction_free(False)
             self.view.set_read_only(False)

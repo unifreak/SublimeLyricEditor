@@ -1,15 +1,15 @@
 [
     {
-        "keys": ["ctrl+super+j"],
+        "keys": ["ctrl+alt+j"],
         "command": "lyric_tag_and_next"
     },
     {
-        "keys": ["ctrl+super+["],
+        "keys": ["ctrl+alt+["],
         "command": "lyric_offset",
         "args": {"updown": "down"}
     },
     {
-        "keys": ["ctrl+super+]"],
+        "keys": ["ctrl+alt+]"],
         "command": "lyric_offset",
         "args": {"updown": "up"}
     },
