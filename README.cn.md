@@ -31,6 +31,7 @@ Lyric Editor 插件让 sublime text 编辑器支持 lrc 歌词编辑
 ### 命令
 
 以下是 Lyric Editor 提供的一些命令及其简介:
+
 - `Insert Meta Info`: 插入一个 snippet, 用于编辑歌词元信息 (名称, 作者, 专辑等等...)
 - `Start`: 从 00:00.00 开始计时.
 - `Start At`: 从指定时间点开始计时.

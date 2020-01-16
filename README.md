@@ -31,6 +31,7 @@ Or by cloning source from github:
 ### Commands
 
 Here are commands that Lyric Editor provide, with some description:
+
 - `Insert Meta Info`: insert a snippet to help you generate id tags.
 - `Start`: start timer at 00:00.00.
 - `Start At`: start timer at specified point.
