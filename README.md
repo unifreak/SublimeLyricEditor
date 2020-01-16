@@ -2,7 +2,7 @@
 
 _中文请见 [这里](https://github.com/UniFreak/SublimeLyricEditor/blob/master/README.cn.md "中文 README")_
 
-LRC (short for LyRiCs) is a computer file format that synchronizes song lyrics with an audio file ([Wikipedia Link](https://en.wikipedia.org/wiki/LRC_(file_format))).
+LRC (short for LyRiCs) is a computer file format that synchronizes song lyrics with an audio file ([Wikipedia Link](https://en.wikipedia.org/wiki/LRC_(file_format)).
 
 Lyric Editor turns sublime text editor into a, well, lrc/lyric editor.
 
