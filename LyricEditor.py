@@ -215,8 +215,10 @@ class LyricOffsetCommand(sublime_plugin.TextCommand):
         sels = v.sel()
 
         tag_pattern = re.compile(r'^\[(\d+:\d\d\.\d\d)\]')
-        for s in sels:
-            for line in v.lines(s):
+        # Go from the end: a new tag can be longer or shorter than the old one, which would
+        # move the lines after it. Never go below 00:00.00, a negative tag is not valid.
+        for s in reversed(list(sels)):
+            for line in reversed(v.lines(s)):
                 log('  line:%s' % v.substr(line))
                 match = tag_pattern.match(v.substr(line))
                 if not match:
@@ -225,13 +227,13 @@ class LyricOffsetCommand(sublime_plugin.TextCommand):
                 tag = match.group(1)
                 log('  old tag:%s' % tag)
                 minute, second = tag.split(':')
+                total = float(minute) * 60 + float(second)
                 if updown == 'up':
-                    second = float(second) + step
+                    total = total + step
                 else:
-                    second = float(second) - step
+                    total = max(total - step, 0)
 
-                minute_plus, new_second = divmod(second, 60)
-                new_minute = float(minute) + minute_plus
+                new_minute, new_second = divmod(total, 60)
                 new_tag = '%.2d:%05.2f' % (new_minute, new_second)
                 log('  new tag:%s' % new_tag)
 
