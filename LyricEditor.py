@@ -167,7 +167,7 @@ def make_tag():
 
 class LyricTagAndNextCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        print('status:%s' % get_status())
+        log('status:%s' % get_status())
 
         v = view()
         if get_status() == 'pause':

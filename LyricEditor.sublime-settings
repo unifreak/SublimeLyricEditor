@@ -1,5 +1,5 @@
 {
-    "debug": true,
+    "debug": false,
     "skip_empty_line": false,
     "offset_step": 0.5,
     "meta": {
